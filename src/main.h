@@ -2,6 +2,7 @@
 #define MAIN_H_INCLUDE
 
 #include <gbdk/platform.h>
+#include <gbdk/console.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
@@ -18,5 +19,10 @@
 #define ARR_SIZE 256
 extern uint8_t arr[ARR_SIZE]; // for used items and decompression
 extern uint8_t SEED;
+
+extern enum state {
+    menu,
+    game,
+} STATE;
 
 #endif

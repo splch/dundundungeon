@@ -1,23 +1,36 @@
 #include "main.h"
 #include "noise.h"
 
-void handle_input()
+bool isNew = true;
+
+void start_game()
+{
+    STATE = game;
+    if (isNew)
+        SEED = DIV_REG; // set random seed
+    else
+        ; // input password
+}
+
+void handle_state()
 {
     const uint8_t j = joypad();
-    if (j & J_RIGHT)
-        printf("right\n");
-    if (j & J_LEFT)
-        printf("left\n");
-    if (j & J_UP)
-        printf("up\n");
-    if (j & J_DOWN)
-        printf("down\n");
-    if (j & J_A)
-        printf("prn: %d\n", prng(DIV_REG, LY_REG));
-    if (j & J_B)
-        printf("b\n");
-    if (j & J_START)
-        printf("seed: %d\n", SEED);
-    if (j & J_SELECT)
-        printf("select\n");
+    switch (STATE)
+    {
+    case menu:
+        if (j & J_UP)
+            isNew = true; // start selection
+        if (j & J_DOWN)
+            isNew = false; // continue selection
+        if (j & J_A || j & J_START)
+            start_game();
+        break;
+    case game:
+        if (j & J_B)
+        {
+            set_bkg_tiles(0, 0, DEVICE_SCREEN_WIDTH, DEVICE_SCREEN_HEIGHT, NULL);
+            printf("%d", prng(DIV_REG, LY_REG));
+        }
+        break;
+    }
 }

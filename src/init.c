@@ -10,6 +10,7 @@
 // extern const hUGESong_t song;
 uint8_t arr[ARR_SIZE];
 uint8_t SEED;
+enum state STATE;
 
 static inline void init_sgb()
 {
@@ -74,14 +75,12 @@ void init_hardware()
     init_font();    // load font for printf
     init_palette(); // set colors for cgb
     // init_tiles();   // decompress tiles
-    init_sound(); // begin playing music
-    DISPLAY_ON;   // game is ready!
+    // init_sound(); // begin playing music
+    DISPLAY_ON; // game is ready!
 }
 
 void init_game()
 {
-    printf("ready");
-    // generate random seed
-    waitpad(0xFF); // accept any input to continue
-    SEED = DIV_REG;
+    STATE = menu;
+    printf("Dun\nDun\nDungeon!\n");
 }

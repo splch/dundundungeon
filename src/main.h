@@ -17,5 +17,6 @@
 
 #define ARR_SIZE 256
 extern uint8_t arr[ARR_SIZE]; // for used items and decompression
+extern uint8_t SEED;
 
 #endif

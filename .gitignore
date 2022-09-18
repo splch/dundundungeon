@@ -10,6 +10,6 @@ build/*/*.sym
 
 .vscode/
 
-# tools/
+tools/
 
 .DS_Store

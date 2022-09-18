@@ -9,8 +9,9 @@
 
 // extern const hUGESong_t song;
 uint8_t arr[ARR_SIZE];
+uint8_t SEED;
 
-void init_sgb()
+static inline void init_sgb()
 {
     // Wait 4 frames
     // For SGB on PAL SNES this delay is required on startup, otherwise borders don't show up
@@ -20,13 +21,13 @@ void init_sgb()
     set_sgb_border(border_data_tiles, sizeof(border_data_tiles), border_data_map, sizeof(border_data_map), border_data_palettes, sizeof(border_data_palettes));
 }
 
-void init_font()
+static inline void init_font()
 {
     font_init();                   // initialize font system
     font_set(font_load(font_ibm)); // set and load the font
 }
 
-void init_palette()
+static inline void init_palette()
 {
     // set color palette for compatible ROMs
     set_bkg_palette_entry(0, 0, RGB8(255, 255, 255)); // lightest color
@@ -40,7 +41,7 @@ void init_palette()
     set_sprite_palette_entry(0, 3, RGB8(0, 0, 0));
 }
 
-void init_tiles()
+static inline void init_tiles()
 {
     // use metasprite sizes
     SPRITES_8x16;
@@ -50,7 +51,7 @@ void init_tiles()
     set_sprite_data(0, gb_decompress(NULL, arr) >> 4, arr);
 }
 
-void init_sound()
+static inline void init_sound()
 {
     // #ifdef NINTENDO // only defined for nintendo
     NR52_REG = 0x80;
@@ -64,4 +65,23 @@ void init_sound()
     STAT_REG = 0b01000000;
     set_interrupts(VBL_IFLAG | LCD_IFLAG);
     // #endif
+}
+
+void init_hardware()
+{
+    DISPLAY_OFF;    // prevent visual bugs
+    init_sgb();     // display sgb border
+    init_font();    // load font for printf
+    init_palette(); // set colors for cgb
+    // init_tiles();   // decompress tiles
+    init_sound(); // begin playing music
+    DISPLAY_ON;   // game is ready!
+}
+
+void init_game()
+{
+    printf("ready");
+    // generate random seed
+    waitpad(0xFF); // accept any input to continue
+    SEED = DIV_REG;
 }

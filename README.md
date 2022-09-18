@@ -55,3 +55,8 @@ Features:
 ## Generation
 
 This game uses [xorshift](https://wikipedia.org/wiki/Xorshift) noise to generate its maps. The algorithm is based on [Hugo Elias'](https://web.archive.org/web/20160303203643/http://freespace.virgin.net/hugo.elias/models/m_perlin.htm) tutorial.
+
+## Misc
+
+- SGB Border Generation: `png2asset res/border.png -map -bpp 4 -max_palettes 4 -pack_mode sgb -use_map_attributes -c res/border_data.c`
+- ROM Usage Analysis: `./tools/romusage/romusage build/gb/*.map`

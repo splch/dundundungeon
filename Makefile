@@ -11,7 +11,7 @@ LCCFLAGS_sms    =
 LCCFLAGS_gg     =
 
 LCCFLAGS += $(LCCFLAGS_$(EXT)) # This adds the current platform specific LCC Flags
-LCCFLAGS += -Wm-yn"DUNDUNDUNGEON"
+LCCFLAGS += -Wm-yn"DDDUNGEON"
 LCCFLAGS += -Wm-yo2 # simple 32KB (2 x 16KB ROM banks) game
 LCCFLAGS += -Wm-ya0 # 0 RAM banks
 LCCFLAGS += -Wm-yp0x014C=0x00 # mask rom version $00

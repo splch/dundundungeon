@@ -1,4 +1,20 @@
 ==========
+2022-10-01
+==========
+- Fixed breakpoints set via remote debugging (thanks to Mallow)
+
+==========
+2022-09-30
+==========
+- Added missing base addresses in Tilemap Viewer for tile based modes on MSX2 (thanks to Bengalak)
+- Improved focus traversal via TAB and Shift+TAB in the debugger (thanks to FIQ)
+- Fixed that the data execution exception did not take the Suspend setting into account (thanks to superdisk)
+- Fixed an issue that could cause an exception to get disabled by reloading a ROM (thanks to superdisk)
+- Fixed that sometimes WRAM labels were missing in Memory Editor's Go To dialog (thanks to FIQ)
+- Fixed an issue with loading a savestate while the Game Boy is stuck in STOP (thanks to FIQ)
+- Fixed missing symbols if RGBDS map files only contains sections (thanks to FIQ)
+
+==========
 2022-09-10
 ==========
 - Fixed false positive on nested interrupts in the interrupt exception (thanks to Eievui, asie)

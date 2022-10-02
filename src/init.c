@@ -8,8 +8,7 @@
 #include "../res/hUGEDriver.h"
 
 // extern const hUGESong_t song;
-uint8_t arr[ARR_SIZE];
-uint8_t SEED;
+uint8_t arr[ARR_SIZE], SEED, FLOOR;
 enum state STATE;
 
 static inline void init_sgb()

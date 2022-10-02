@@ -11,8 +11,11 @@ A roguelike GameBoy game that could have been released in 1989.
 3. `tools/` clones various development tools:
 
 - [tile designer](https://github.com/gbdk-2020/GBTD_GBMB/releases/) to edit the `res/*.gbr` files
+
 - [emulicious](https://emulicious.net/) to run the GameBoy ROM.
-- [hUGETracker](https://nickfa.ro/index.php/HUGETracker) to compose `res/wellerman.uge`
+
+- [hUGETracker](https://nickfa.ro/index.php/HUGETracker) to compose `res/*.uge`
+
 - [romusage](https://github.com/bbbbbr/romusage) to view the GameBoy ROM bank space `./romusage game.map -gA`
 
 4. `build/` has the most recent ROMs for different systems
@@ -59,4 +62,5 @@ This game uses [xorshift](https://wikipedia.org/wiki/Xorshift) noise to generate
 ## Misc
 
 - SGB Border Generation: `png2asset res/border.png -map -bpp 4 -max_palettes 4 -pack_mode sgb -use_map_attributes -c res/border_data.c`
+
 - ROM Usage Analysis: `./tools/romusage/romusage build/gb/*.map`
